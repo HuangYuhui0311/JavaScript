@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            //1.工厂模式：
+            function student1(name,qq){
+                var obj=new Object();
+                obj.name=name;
+                obj.qq=qq;
+                obj.show=function(){
+                    alert(this.name+":"+this.qq);
+                }
+                return obj;
+            }
+            var s1=student1("HH","123");
+            console.log(s1);
+            //2.构造函数：
+            function Student2(name,qq){
+                this.name=name;
+                this.QQ=qq;
+                this.show=function(){
+                    alert(this.name+":"+this.QQ);
+                }
+            }
+            var s2=new Student2("HH","1234");
+            console.log(s2);
+            //3.字面量方式：
+            var s3={
+                "name":"HH",
+                "QQ":"12345",
+                show:function(){
+                    alert(this.name+":"+this.QQ);
+                //alert(name+":"+QQ);//错误！！！
+                }
+            }
+            //s3.show();
+            //console.log(s3.name+":"+s3.QQ);
+            console.log(s3);
+
+            //我们在定义函数的时候，函数本身就会默认有一个prototype的属性，而我们用new运算符来生成一个对象的时候就没有prototype属性。如：
+            console.log(s1.prototype);//undefined;
+            console.log(student1.prototype);//Object;
+            console.log(s2.prototype);//undefined;
+            console.log(Student2.prototype);//Object;
+            console.log(s3.prototype);//undefined;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

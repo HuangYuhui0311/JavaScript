@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            function Student(){
+                this.QQ="1e324214";
+            };
+            Student.prototype.name="HH";
+            Student.prototype.show=function(){
+                alert("I am "+this.name);
+            }
+
+            var s=new Student();
+
+            //isPrototypeOf 判断一个对象是否存在于另一个对象的原型链当中
+            console.log( Student.prototype.isPrototypeOf(s)); //true;
+            console.log(Student.isPrototypeOf(s));//false;??????
+            //类型名调用，判断当前类型是否存在某个属性
+            console.log(Student.hasOwnProperty("name")); //true;
+            console.log(Student.hasOwnProperty("QQ")); //false
+            //实例对象调用，当前对象是否包含某个属性(实例的属性)
+            console.log(s.hasOwnProperty("name"));//false  ??????
+            console.log(s.hasOwnProperty("QQ"));//true;  实例s的原型是Student啦!!
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

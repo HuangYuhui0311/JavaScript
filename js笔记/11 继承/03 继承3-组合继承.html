@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            //组合继承 ： 对象冒充 + 原型继承
+            function Person(name,age){
+                this.name=name;
+                this.age=age;
+                if(typeof this.show != "function"){
+                    Person.prototype.show=function(){
+                        alert("I am "+this.name);
+                    }
+                }
+            }
+            function Student(id,name,age,score){
+                this.id=id;
+                this.score=score;
+                if(typeof this.show != "function"){
+                    Student.prototype.show=function(){
+                        alert("score is "+this.score);
+                    }
+                }
+//                this.show=function(){
+//                    alert("score is "+this.score);
+//                }
+                //alert(this);
+                Person.call(this,name,age);//对象冒充，call:将this指向Student,函数调用时原本指向Person；
+            }
+            var s1=new Student("01","mm",18,180);
+            console.log(s1);
+            s1.show();  // 调用student函数；person里的show函数不被继承！！！
+
+
+            Student.prototype=new Person(); // 原型继承
+            var s2=new Student("02","yy",19,200);
+            //Student.prototype=new Person(); // 原型继承
+            console.log(s2);
+            s2.show();//调用Person里的函数show（因为Student里无函数show,注意顺序问题！！），若无判断，则调用Student里的函数show。
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

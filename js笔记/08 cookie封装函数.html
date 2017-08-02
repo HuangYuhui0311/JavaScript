@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            setCookie("name","HH",10);
+            setCookie("age",10,5);
+            removeCookie("age");
+            addCookie({name:"aa",age:20,height:160},10);
+            setInterval(function(){
+                console.log(document.cookie);
+            },1000);
+            //console.log(getCookie("age"));
+        }
+        //添加cookie
+        function setCookie(name,value,time) {//time单位为秒
+            var date = new Date();
+            date.setSeconds(date.getSeconds() + time);
+            //expires只能传入时间对象，不能是时间戳，因为时间戳不能被识别！
+            document.cookie = name + "=" + value + ";expires=" + date.setSeconds(date.getSeconds() + time);
+
+        }
+        function getCookie(name){
+            var cookieArr=document.cookie.split(";");
+            for(var i=0;i<cookieArr.length;i++){
+                var cookies=cookieArr[i].split("=");
+                if(cookies[0]==name){
+                    return cookies[1];
+                }
+            }
+            return "";
+        }
+        function removeCookie(name){
+            setCookie(name,null,-1);
+        }
+        function addCookie(cookieJson,time){
+            for(var key in cookieJson){
+                setCookie(key,cookieJson[key],time);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

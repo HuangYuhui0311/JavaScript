@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function() {
+
+            //1.工厂模式：
+            function student1(name, qq) {
+                var obj = new Object();
+                obj.name = name;
+                obj.qq = qq;
+                obj.show = function () {
+                    alert(this.name + ":" + this.qq);
+                }
+                return obj;
+            }
+
+            var s1 = student1("HH", "123");
+
+            //2.构造函数：
+            function Student2(name, qq) {
+                this.name = name;
+                this.QQ = qq;
+                this.show = function () {
+                    alert(this.name + ":" + this.QQ);
+                }
+            }
+
+            var s2 = new Student2("HH", "1234");
+
+            //3.字面量方式：
+            var s3 = {
+                "name": "HH",
+                "QQ": "12345",
+                show: function () {
+                    alert(this.name + ":" + this.QQ);
+                }
+            }
+
+            //4.原型
+            function Student4(){
+                this.QQ="12344455";
+            };
+            Student4.prototype.name="HH";
+            Student4.prototype.show=function(){
+                alert("I am "+this.name);
+            }
+
+            var s4=new Student4();
+
+            delete s1.name;
+            delete s2.name;
+            delete s3.name;
+            delete s4.name;
+            delete s4.QQ;
+            //console.log(s1,s2,s3,s4);  // s4原型中的name不被删除！！！
+            console.log(student1);//返回原函数，obj.name 还在
+            console.log(Student2);//返回原函数，this.name 还在
+            console.log(s3);//返回Object， name 已不存在。
+            console.log(Student4); //返回原函数， this.QQ还在
+            console.log(s4.__proto__);//s4原型中name还存在。
+
+            //即删除实例对象的属性，函数里的属性不能被删除！！
+
+            //delete s4.__proto__.name;
+            delete Student4.prototype.name;
+            console.log(s4);   // 原型里的name被删除！
+
+            delete Student2.name; //构造函数里的name删除不掉！
+            console.log(Student2);
+            var ss=new Student2("AA","123432");
+            console.log(ss.name);
+
+            //总的来说，通过实例对象改变不了函数里原本的属性和方法，但可以改变其原型，因为原型一改则全改！！
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

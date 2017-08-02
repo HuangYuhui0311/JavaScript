@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            iAjax("wenben.txt",function(str){
+                alert(str);
+            },function(str){
+                alert(str);
+            });
+        }
+        function iAjax(url,funS,funF){
+            //创建Ajax对象（需兼容处理）
+            if(window.XMLHttpRequest){
+                var oAjax=new XMLHttpRequest();//非IE6。IE6返回undefined，被当成了window对象。
+            }else{
+                var oAjax=new ActiveXObject("Microsoft.XMLHTTP");//IE6
+            }
+            //建立连接 open(请求方式，URL，是否异步传输)
+            oAjax.open("get",url,true);
+            //发送请求
+            oAjax.send();
+            //接收请求返回的结果
+            oAjax.onreadystatechange=function(){
+                if(oAjax.readyState==4){
+                    if(oAjax.status==200){//200:请求成功；404:请求失败（文件不存在）；503:服务器超时
+                        funS(oAjax.responseText);//返回响应内容
+                    }else{
+                        funF(oAjax.status);
+                    }
+                }
+            }
+            /*readyState:
+              1.请求初始化，没有建立连接之前；
+              2.建立连接，没有发送请求前；
+              3.请求正在处理；
+              4.响应完成
+            */
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

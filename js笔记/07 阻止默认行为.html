@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+
+/*            document.addEventListener("contextmenu",function(ev){
+                var ev=ev||event;
+//                ev.preventDefault();
+                ev.returnValue=false;
+            },false);*/
+
+            document.attachEvent("oncontextmenu",function(){
+                var ev=ev||event;
+                ev.returnValue=false;
+//                return false;
+            })
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

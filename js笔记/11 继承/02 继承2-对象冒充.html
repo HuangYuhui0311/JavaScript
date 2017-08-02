@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            function Person(name,age){
+                this.name=name;
+                this.age=age;
+                if(typeof this.show != "function"){
+                    Person.prototype.show=function(){
+                        alert("I am "+this.name);
+                    }
+                }
+
+            }
+            function Student(id,name,age,score){
+                this.id=id;
+                this.score=score;
+//                if(typeof this.show != "function"){
+//                    Student.prototype.show=function(){
+//                        alert("score is "+this.score);
+//                    }
+//                }
+                //alert(this);
+                Person.call(this,name,age);//对象冒充，call:将this指向Student,函数调用时原本指向Person；
+            }
+            var s=new Student("01","mm",18,180);
+            console.log(s);
+            s.show(); //调用student函数；
+            //对象冒充 并非真正继承，而是通过 （调用函数） 改变this指向 冒充 被继承对象 创建 对象和属性，所以 似乎被继承对象 的原型里 的属性和方法 不能被 冒充对象 调用。
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

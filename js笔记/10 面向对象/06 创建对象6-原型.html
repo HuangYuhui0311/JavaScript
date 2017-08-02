@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            function Student(){};
+            Student.prototype.name="HH";
+            Student.prototype.show=function(){
+                alert("I am "+this.name);
+            }
+
+            var s=new Student();
+            //s.show();
+            //alert(s.name);
+            Student.prototype.name="FF";
+            //alert(s.name);
+            //原型方式创建对象的缺陷：1.不能传参； 2.一改全改
+
+            function Student1(){
+                this.name="FF";
+            };
+            Student1.prototype.name="HH";
+            Student1.prototype.show=function(){
+                alert("I am "+this.name);
+            }
+            var s1=new Student1();
+
+            console.log(s1.name);//FF
+            console.log(s1.__proto__.name);//HH
+            console.log(Student1.prototype.name);//HH
+
+            Student1.prototype.name="O_O";
+
+            console.log(s1.name);//FF
+            console.log(s1.__proto__.name);//O_O
+            console.log(Student1.prototype.name);//O_O
+
+            //通过原型改变的属性和方法不会改变对象原有的属性和方法
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            var a;
+            var b=null;
+            //console.log(a.toString(),b.toString());//报错
+            //console.log(String(a),String(b));
+
+            function String(x){
+                if(x===undefined){
+                    return "undefined";
+                }else if(x===null){
+                    return "null";
+                }else{
+                    return x.toString();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            //混合模式： 构造函数+原型
+            function Student(name,QQ){
+                this.name=name;
+                this.QQ=QQ;
+                if(typeof this.show != "function"){
+                    Student.prototype.show=function(){
+                        //alert(this.name+":"+this.QQ);
+                        console.log(this); // this指s1
+                    }
+                }
+            }
+            var s1=new Student("MM","1242");
+            s1.show();
+            var s2=new Student("QQ","w809r809ew");
+            console.log(s1.show==s2.show);//true;通过Student创建的对象共用函数show，其保存在Student的原型中，故引用地址是一样的。
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

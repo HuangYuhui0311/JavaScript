@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+
+
+            function Student(name,qq){
+                this.name=name;
+                this.QQ=qq;
+                this.show=function(){
+                    alert(this.name+":"+this.QQ);
+                }
+            }
+            var s1=new Student("HH","122333");
+            var s2=new Student("HH","123343");
+            //s1.show();
+            console.log(s1==s2);//false,比较的是引用地址
+            console.log(s1.show==s2.show);//false;
+            // show方法被封装在对象中，不同对象的指针地址不同，故不同对象调用同一方法的指针地址也不同。
+            console.log(s1.show==s1.show);//true;
+            console.log(s1.name==s2.name);//true; 虽然s1与s2的指针地址不同，但name值相同，当==或===比较的是基本数据类型，比较的是其值。
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

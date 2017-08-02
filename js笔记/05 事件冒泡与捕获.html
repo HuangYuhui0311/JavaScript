@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            var btn=document.getElementsByTagName("button")[0];
+            var oDiv=document.getElementsByTagName("div")[0];
+            btn.onclick=function(ev){
+                console.log("按钮点击了");
+                var ev=ev||event;
+                ev.cancelBubble=true;
+                //ev.stopPropagation();
+            }
+            oDiv.onclick=function(){
+                console.log("div点击了");
+                console.log(event);
+            }
+            document.body.onclick=function(){
+                console.log("body点击了");
+            }
+            document.onclick=function(){
+                console.log("document点击了");
+            }
+            window.onclick=function(){
+                console.log("window点击了");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="width:200px; height:200px; border:1px solid #ccc;">
+    <button>确定</button>
+</div>
+</body>
+</html>

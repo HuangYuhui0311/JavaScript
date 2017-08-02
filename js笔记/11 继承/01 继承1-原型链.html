@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            function Person(name,age){
+                this.name=name;
+                this.age=age;
+                if(typeof this.show != "function"){
+                    Person.prototype.show=function(){
+                        alert("I am "+this.name);
+                    }
+                }
+            }
+            function Student(id,score){
+                this.id=id;
+                this.score=score;
+                if(typeof this.show != "function"){
+                    Student.prototype.show=function(){
+                        alert("score is "+this.score);
+                    }
+                }
+            }
+            var s1=new Student();
+            console.log(s1);
+            s1.show(); //student里的show方法
+            Student.prototype=new Person();
+            var s2=new Student();
+            console.log(s2);
+            s2.show(); //是Person里的show方法
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

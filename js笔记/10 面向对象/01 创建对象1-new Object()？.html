@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            //创建对象obj;
+            var obj=new Object();
+            //创建对象属性
+            obj.name="HYH";
+            obj.age="20";
+            obj.height="160";
+            alert(obj.weight);//undefined;
+            //创建对象方法
+            obj.eat=function(){
+                console.log(name);// 为空????????
+                //console.log(age);//报错！！！
+                console.log(obj.name);//HYH
+                console.log(this.name);//HYH
+                alert(name+'该吃饭了！！！');//该吃饭了！！！
+                alert(this.name+"该吃饭了！！！");//HYH该吃饭了！！！
+            }
+            //调用对象属性 对象.属性
+            console.log(obj.name,obj.age,obj.height);
+            //调用对象方法  对象.方法();
+            //eat();//报错，eat方法是对象obj的，不是window的；
+            obj.eat();
+            console.log(obj);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

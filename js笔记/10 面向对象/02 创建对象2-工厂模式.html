@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            //通过调用函数创建Student对象
+            var stu1=student("MM","123456");
+            //stu对象调用函数show
+            //stu1.show();
+            var stu2=student("HH","123455665");
+            var stu3=student("MM","123455665");
+            var t1=teacher("MM","123456");
+            console.log(stu1==stu1);//false
+            console.log(stu1);//Object
+            console.log(stu1.name==stu3.name);//true
+            console.log(stu1.name===stu3.name);//true
+            console.log(stu1.name==t1.name);//true
+            console.log(stu1.name===t1.name);//true
+
+            //故工程模式创建的对象的属性的比较是比较值。
+        }
+        function student(name,qq){  //工程模式，即封装一个该类函数
+            //创建对象
+            var obj=new Object();
+            //创建对象属性
+            obj.name=name;
+            obj.qq=qq;
+            //创建对象方法
+            obj.show=function(){
+                //alert(obj.name+":"+obj.qq);
+                alert(this.name+":"+this.qq);
+            }
+            //返回创建的对象
+            return obj;
+        }
+        function teacher(name,qq){  //工程模式，即封装一个该类函数
+            //创建对象
+            var obj=new Object();
+            //创建对象属性
+            obj.name=name;
+            obj.qq=qq;
+            //创建对象方法
+            obj.show=function(){
+                //alert(obj.name+":"+obj.qq);
+                alert(this.name+":"+this.qq);
+            }
+            //返回创建的对象
+            return obj;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
